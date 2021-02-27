@@ -6,6 +6,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag "inter-font" %>
+    <%= stylesheet_link_tag "tailwind" %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stimulus_include_tags %>
     <%= javascript_include_tag "turbo", type: "module-shim" %>
@@ -13,6 +15,8 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <%= yield %>
+    </div>
   </body>
 </html>
