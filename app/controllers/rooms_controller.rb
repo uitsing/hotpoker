@@ -6,6 +6,10 @@ class RoomsController < ApplicationController
     @public_rooms = Room.where(private: false)
   end
 
+  def show
+    @room = @user.rooms.find(params[:id])
+  end
+
   def new
     @room = @user.rooms.new
   end

@@ -1,0 +1,7 @@
+<div class="flex flex-wrap">
+  <% Card::FIB.each do |number| %>
+    <div class="transform hover:-translate-y-4 m-2 w-16 h-28 bg-blue-300 rounded-lg flex flex-col p-2">
+      <div class="text-4xl mx-auto"><%= number %></div>
+    </div>
+  <% end %>
+</div>

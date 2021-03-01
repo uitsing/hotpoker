@@ -1,0 +1,11 @@
+<turbo-frame id="board">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+    <h1 class="text-2xl font-semibold text-gray-900"><%= @item.name %></h1>
+  </div>
+  <div class="h-96 m-4 bg-blue-100 flex justify-center items-center">
+    <div class="grid grid-cols-4 gap-3">
+      <%= render @item.cards %>
+    </div>
+  </div>
+  <%= render 'cards/select_panel', item: @item %>
+</turbo-frame>

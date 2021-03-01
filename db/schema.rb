@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_27_043748) do
+ActiveRecord::Schema.define(version: 2021_03_01_025136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cards", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "user_id"
+    t.integer "point"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_cards_on_item_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.bigint "room_id"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_items_on_room_id"
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string "name"
