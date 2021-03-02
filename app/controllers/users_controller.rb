@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user
+  before_action :set_user, except: %i[new create]
 
   def new
     @user = User.new
@@ -19,10 +19,5 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name)
-  end
-
-  def set_user
-    @user = User.find_by(uuid: session['uuid'])
-    redirect_to rooms_path if @user
   end
 end

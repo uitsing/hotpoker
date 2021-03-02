@@ -7,7 +7,7 @@ class RoomsController < ApplicationController
   end
 
   def show
-    @room = @user.rooms.find(params[:id])
+    @room = Room.find(params[:id])
   end
 
   def new
@@ -27,10 +27,5 @@ class RoomsController < ApplicationController
 
   def room_params
     params.require(:room).permit(:name, :private)
-  end
-
-  def set_user
-    @user = User.find_by(uuid: session['uuid'])
-    redirect_to new_user_path unless @user
   end
 end
