@@ -1,0 +1,17 @@
+<div data-controller="menu" class="w-0 md:w-auto">
+  <div class="fixed md:hidden z-50">
+    <button data-action="menu#toggle">
+      <svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <div class="hidden md:block w-60" data-menu-target="menu">
+    <div data-action="click->menu#toggle" class="z-20 fixed md:hidden w-full h-full bg-gray-700 opacity-50"></div>
+    <div class="pt-16 bg-white fixed md:block z-40 h-screen w-60 border-r border-gray-300">
+      <div class="flex flex-col">
+        <%= render @room.items %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,23 @@
-<div>
-  <h1>Create your room</h1>
-  <%= link_to 'Create New Room', new_room_path %>
+<div class="my-4 pt-4">
+  <%= link_to 'New Room', new_room_path, data: { 'turbo-frame': 'new_room' } %>
+  <turbo-frame id="new_room"></turbo-frame>
 </div>
-
-
-<div>
-  <h2 class="text-gray-500 text-xs font-medium uppercase tracking-wide">Pinned Projects</h2>
-  <ul class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<div class="border-t-2 border-gray-300 mt-4 pt-2">
+  <h2 class="text-gray-500 text-xs font-medium uppercase tracking-wide">
+    My Rooms
+  </h2>
+  <%= turbo_stream_from [@user, 'rooms'] %>
+  <ul id="rooms" class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
     <%= render @rooms %>
+  </ul>
+</div>
+<div class="border-t-2 border-gray-300 mt-4 pt-2">
+  <h2 class="text-gray-500 text-xs font-medium uppercase tracking-wide">
+    Private Rooms
+  </h2>
+  <%= turbo_stream_from 'public_rooms' %>
+  <ul id="public_rooms" class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    <%= render @public_rooms %>
   </ul>
 </div>
 

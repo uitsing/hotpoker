@@ -8,6 +8,13 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @item =
+      if @room.items.empty?
+        @room.items.create
+      else
+        @room.items.last
+      end
+    redirect_to room_item_path(@room, @item)
   end
 
   def new

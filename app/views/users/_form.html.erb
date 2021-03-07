@@ -1,5 +1,15 @@
-<%= form_with model: user do |form| %>
-  <%= form.label :name %>
-  <%= form.text_field :name %>
-  <%= form.submit %>
-<% end %>
+<div class="mx-auto w-96 h-52 m-4 bg-white overflow-hidden shadow rounded-lg">
+  <div class="px-4 py-5 sm:p-6">
+    <%= form_with model: user do |form| %>
+      <%= form.label :name, class: 'block text-sm font-medium text-gray-700' %>
+      <div class="mt-1">
+        <%= form.text_field :name, place_holder: 'Jack', class: 'shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md' %>
+      </div>
+      <p class="mt-2 text-sm text-gray-500" id="email-description">
+        Please enter your display name.
+      </p>
+      <%= form.submit 'Submit', class: 'my-3 w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+    <% end %>
+  </div>
+</div>
+

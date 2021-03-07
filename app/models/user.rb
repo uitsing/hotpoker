@@ -1,7 +1,6 @@
 class User < ApplicationRecord
   has_many :rooms
   has_many :cards
-  validates :name, presence: true
   before_create :generate_uuid
 
   def generate_uuid

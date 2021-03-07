@@ -6,8 +6,9 @@ export default class extends Controller {
     console.log('hello')
   }
 
-  toggle() {
-    console.log('toggle')
+  toggle(event) {
+    event.preventDefault()
+
     this.menuTarget.classList.toggle('hidden')
   }
 }
