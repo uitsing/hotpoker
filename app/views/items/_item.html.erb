@@ -1,15 +1,9 @@
-<% if current_page? room_item_path(@room, item) %>
-  <div class="flex bg-blue-100 p-3 font-bold">
-    <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7" />
-    </svg>
-    <%= item.name %>
-  </div>
-<% else %>
+<div id="<%= dom_id(item) %>">
   <%= link_to room_item_path(@room, item), class: 'flex font-medium hover:bg-blue-50 p-3' do %>
-    <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
-    </svg>
-    <%= item.name %>
+    <% if current_page? room_item_path(@room, item) %>
+      👉 <%= item.name %>
+    <% else %>
+      🔹 <%= item.name %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

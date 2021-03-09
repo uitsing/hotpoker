@@ -22,12 +22,7 @@ class RoomsController < ApplicationController
   end
 
   def create
-    room = @user.rooms.create(room_params)
-    if room
-      redirect_to rooms_path
-    else
-      render :new
-    end
+    @user.rooms.create(room_params)
   end
 
   private

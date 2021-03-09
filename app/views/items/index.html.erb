@@ -1,5 +1,7 @@
 <%= turbo_frame_tag @room do %>
-  <nav class="flex-1 bg-white px-2 space-y-1">
+  <%= turbo_stream_from @room %>
+  <nav id="items" class="flex-1 bg-white px-2 space-y-1">
     <%= render @items %>
   </nav>
+  <%= render 'form', room: @room, item: @new_item %>
 <% end %>
