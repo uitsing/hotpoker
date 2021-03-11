@@ -1,0 +1,9 @@
+<%= turbo_frame_tag 'user_panel' do %>
+  <%= form_with model: @user do |form| %>
+    <div class="flex h-12">
+      <%= form.label :name, class: 'block text-lg font-lg text-gray-700 my-auto mr-2' %>
+      <%= form.text_field :name, place_holder: @user.name, class: 'w-48 mr-2 focus:ring-blue-500 focus:border-blue-500 border-gray-300 rounded-md' %>
+      <%= form.submit 'Submit', class: 'w-20 px-2 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
+    </div>
+  <% end %>
+<% end %>
