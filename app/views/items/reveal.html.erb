@@ -1,0 +1,9 @@
+<%= turbo_frame_tag 'card_action' do %>
+  <div class="flex">
+    <%= form_with url: restart_room_item_path(@room, @item) do |form| %>
+      <%= form.submit 'Restart'  %>
+    <% end %>
+
+    <%= link_to 'Next item', '#' %>
+  </div>
+<% end %>

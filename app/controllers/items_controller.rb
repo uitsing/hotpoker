@@ -1,6 +1,15 @@
 class ItemsController < ApplicationController
-  before_action :set_user
-  before_action :set_room
+  before_action :set_user, :set_room
+  before_action :set_item, only: %i[reveal restart show]
+
+  def reveal
+    @item.cards.each(&:reveal!)
+  end
+
+  def restart
+    @item.cards.destroy_all
+    redirect_to room_item_path(@room, @item)
+  end
 
   def index
     @items = @room.items
@@ -8,7 +17,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = @room.items.find_by(id: params[:id])
     redirect_to room_path(@room) unless @item
   end
 
@@ -26,6 +34,10 @@ class ItemsController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = @room.items.find_by(id: params[:id])
+  end
 
   def item_params
     params.require(:item).permit(:name)

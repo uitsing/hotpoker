@@ -1,7 +1,25 @@
 <div class="flex">
   <%= render 'rooms/sidebar', room: @room %>
   <div class="mt-8 md:mt-0 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <%= render @user %>
+    <div>
+      <div class="px-4 items-center flex py-4 border border-gray-300 bg-white rounded-b-md flex justify-between">
+        <div class="flex items-center">
+          <span class="mr-2">Room Link:</span>
+          <div class="mr-2 bg-gray-200 p-2 rounded-lg"><%= request.url %></div>
+          <span>📋</span>
+        </div>
+        <div>
+          <%= render @user %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <%= turbo_frame_tag 'card_action' do %>
+        <div>
+          <%= link_to 'Reveal', reveal_room_item_path(@room, @item) %>
+        </div>
+      <% end %>
+    </div>
     <div class="h-96 m-4 bg-blue-100 flex justify-center items-center">
       <%= turbo_stream_from @item %>
       <div id="cards" class="grid grid-cols-4 gap-4">

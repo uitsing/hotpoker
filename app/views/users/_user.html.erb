@@ -1,9 +1,8 @@
-<div class="bg-white rounded-md flex justify-center">
-  <%= turbo_frame_tag 'user_panel' do %>
-    <div class="flex h-12 items-center justify-around">
-      <span class="text-lg">Name</span>
-      <span class="w-48 rounded-md block border border-gray-300 p-3 mx-2"><%= user.name %></span>
-      <%= link_to 'Edit', edit_user_path(user), class: 'text-center w-20 p-3 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' %>
-    </div>
-  <% end %>
-</div>
+<%= turbo_frame_tag 'user_panel' do %>
+  <div class="flex h-12 items-center justify-around">
+    <span class="text-lg">🔖 Name</span>
+    <%= link_to edit_user_path(user) do %>
+      <span class="w-48 rounded-md border border-gray-100 block p-3 mx-2"><%= user.name %></span>
+    <% end %>
+  </div>
+<% end %>

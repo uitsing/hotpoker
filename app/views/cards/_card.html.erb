@@ -1,4 +1,20 @@
 <div id="<%=dom_id card %>" class="w-20 lg:w-24 h-28 lg:h-40 bg-blue-300 rounded-lg flex flex-col p-2 justify-between">
-  <div class="text-5xl lg:text-6xl mx-auto"><%= card.point %></div>
-  <div class="mx-auto"><%= card.user.name %></div>
+  <% if card.fold? %>
+    <div id="card-back" class="flex flex-col justify-end w-full h-full rounded">
+      <div class="mx-auto">
+        <%= turbo_stream_from [card.user, 'name'] %>
+        <span id="<%= dom_id card.user %>">
+      <%= card.user.name %>
+    </span>
+      </div>
+    </div>
+  <% else %>
+    <div class="text-5xl lg:text-6xl mx-auto"><%= card.point %></div>
+    <div class="mx-auto">
+      <%= turbo_stream_from [card.user, 'name'] %>
+      <span id="<%= dom_id card.user %>">
+      <%= card.user.name %>
+    </span>
+    </div>
+  <% end %>
 </div>
